@@ -1,0 +1,50 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Cosplay đúng char",
+            "image": "https://media.tenor.com/SxXcDY6X72EAAAAe/nahida-nerd.png"
+        },
+        {
+            "id": 2,
+            "name": "Cosplay char lạ",
+            "image": "https://media.tenor.com/SxXcDY6X72EAAAAe/nahida-nerd.png"
+        },
+        {
+            "id": 3,
+            "name": "Figure",
+            "image": "https://media.tenor.com/SxXcDY6X72EAAAAe/nahida-nerd.png"
+        },
+        {
+            "id": 4,
+            "name": "Phụ kiện wig",
+            "image": "https://media.tenor.com/SxXcDY6X72EAAAAe/nahida-nerd.png"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Full bộ đồ cosplay Nahida nguyên gốc GE",
+            "price": 1200000,
+            "image": "https://img.joomcdn.net/47d661a02da24b1f212f372c86a6ed20ea7b0451_original.jpeg"
+        },
+        {
+            "id": 2,
+            "name": "Full bộ đồ cosplay Lumine nguyên gốc GE",
+            "price": 200000,
+            "image": "https://www.fm-anime.com/media/catalog/product/cache/d88a63ef4f53a0b30222f4d68ed8ec62/g/e/genshin_impact_lumine_female_traveler_dress_2_-_-min.jpg"
+        },
+        {
+            "id": 3,
+            "name": "HOT- Bộ tóc giả Keqing",
+            "price": 300000,
+            "image": "https://m.media-amazon.com/images/I/71vY3pIqnFL._AC_UF1000,1000_QL80_.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Full phụ kiện Yae Miko ver sườn xám",
+            "price": 2500000,
+            "image": "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lkhn84mm167c3c"
+        }
+    ]
+}
