@@ -70,6 +70,8 @@ const RegisterScreen = ({ navigation }) => {
             const updatedUsers = [...existingUsers, newUser];
 
             await AsyncStorage.setItem('users', JSON.stringify(updatedUsers));
+            await AsyncStorage.setItem('user_data', JSON.stringify(newUser)); // Lưu full user
+
             Alert.alert('Success', 'Registration successful!');
             navigation.navigate('Login');
         } catch (error) {
@@ -77,6 +79,8 @@ const RegisterScreen = ({ navigation }) => {
             Alert.alert('Error', 'Something went wrong.');
         }
     };
+
+
 
     return (
         <ImageBackground source={require('../../assets/background1.jpg')} style={styles.background}>

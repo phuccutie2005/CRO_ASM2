@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-    View, Text, TextInput, FlatList, Image, TouchableOpacity,
+    View, Text, FlatList, Image, TouchableOpacity,
     ActivityIndicator, SafeAreaView, Dimensions
 } from 'react-native';
 import axios from 'axios';
 import styles from './styles'; // Import file styles
-import ProductDetail from './ProductDetail/ProductDetail';
-
+import SearchBar from './SearchBar'; // Đường dẫn đúng tới file SearchBar.js
 
 const API_URL = 'http://192.168.100.207:5000'; // Đổi thành IP backend của bạn
 
@@ -21,17 +20,21 @@ const banners = [
 const HomeScreen = ({ navigation }) => {
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [loading, setLoading] = useState(true);
     const [bannerIndex, setBannerIndex] = useState(0);
 
     const bannerRef = useRef(null);
     const screenWidth = Dimensions.get('window').width;
+    let bannerInterval = useRef(null);
 
     useEffect(() => {
         fetchCategories();
         fetchProducts();
         startBannerAutoScroll();
+
+        return () => clearInterval(bannerInterval.current); // Clear interval khi unmount
     }, []);
 
     const fetchCategories = async () => {
@@ -47,6 +50,7 @@ const HomeScreen = ({ navigation }) => {
         try {
             const response = await axios.get(`${API_URL}/products`);
             setProducts(response.data);
+            setFilteredProducts(response.data);
         } catch (error) {
             console.error('Error fetching products:', error);
         } finally {
@@ -54,18 +58,19 @@ const HomeScreen = ({ navigation }) => {
         }
     };
 
-    const handleSearch = () => {
-        setLoading(true);
-        const filteredProducts = products.filter(product =>
-            product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    const handleSearch = (query) => {
+        setSearchQuery(query);
+        if (!query.trim()) return setFilteredProducts(products); // Nếu trống, reset danh sách
+
+        const filtered = products.filter(product =>
+            product.name.toLowerCase().includes(query.toLowerCase())
         );
-        setProducts(filteredProducts);
-        setLoading(false);
+        setFilteredProducts(filtered);
     };
 
     // Tự động chuyển banner sau 10 giây
     const startBannerAutoScroll = () => {
-        setInterval(() => {
+        bannerInterval.current = setInterval(() => {
             setBannerIndex((prevIndex) => {
                 let nextIndex = (prevIndex + 1) % banners.length;
                 bannerRef.current?.scrollToIndex({ index: nextIndex, animated: true });
@@ -77,20 +82,12 @@ const HomeScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
-                data={products}
+                data={filteredProducts}
                 keyExtractor={(item) => item.id.toString()}
                 ListHeaderComponent={
                     <>
                         {/* Thanh tìm kiếm */}
-                        <View style={styles.searchContainer}>
-                            <TextInput
-                                style={styles.searchInput}
-                                placeholder="Tìm kiếm sản phẩm..."
-                                value={searchQuery}
-                                onChangeText={setSearchQuery}
-                                onSubmitEditing={handleSearch}
-                            />
-                        </View>
+                        <SearchBar placeholder="Tìm kiếm sản phẩm..." onChangeText={handleSearch} />
 
                         {/* Banner quảng cáo */}
                         <FlatList
@@ -128,11 +125,12 @@ const HomeScreen = ({ navigation }) => {
                     </>
                 }
                 renderItem={({ item }) => (
-                    <TouchableOpacity style={styles.productItem}
-                        onPress={() => navigation.navigate('ProductDetail', { product: item })}>
+                    <TouchableOpacity
+                        style={styles.productItem}
+                        onPress={() => navigation.navigate('ProductDetail', { product: item })}
+                    >
                         <Image source={{ uri: item.image }} style={styles.productImage} />
                         <Text style={styles.productName}>{item.name}</Text>
-                        {/* Thêm container để căn chỉnh giá và "đã bán" */}
                         <View style={styles.priceSoldContainer}>
                             <Text style={styles.productPrice}>{item.price.toLocaleString()} đ</Text>
                             <Text style={styles.productSold}>Đã bán: {Math.floor(Math.random() * 1000)}</Text>

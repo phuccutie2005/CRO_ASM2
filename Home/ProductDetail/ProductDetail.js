@@ -15,6 +15,7 @@ const ProductDetail = ({ route }) => {
     const [actionType, setActionType] = useState(null);
 
     useEffect(() => {
+        console.log("Product data:", product);
         navigation.getParent()?.setOptions({ tabBarStyle: { display: 'none' } });
         return () => navigation.getParent()?.setOptions({ tabBarStyle: { backgroundColor: '#fff', height: 60 } });
     }, [navigation]);
@@ -116,25 +117,18 @@ const ProductDetail = ({ route }) => {
                         <Ionicons name="star" size={16} color="gold" />
                         <Text style={styles.ratingText}>{product.rating || '4.5'} (6,879)</Text>
                     </View>
-                    <View style={styles.tagsContainer}>
-                        <View style={styles.tag}><Text style={styles.tagText}>Bean</Text></View>
-                        <View style={styles.tag}><Text style={styles.tagText}>Africa</Text></View>
-                        <View style={styles.tag}><Text style={styles.tagText}>Medium Roasted</Text></View>
-                    </View>
                     <Text style={styles.sectionTitle}>Description</Text>
-                    <Text style={styles.productDescription}>{product.description || "No description available."}</Text>
+                    <Text style={styles.productDescription}>
+                        {product.description || "No description available."}
+                    </Text>
+
                     <Text style={styles.sectionTitle}>Size</Text>
-                    <View style={styles.sizeContainer}>
-                        <TouchableOpacity style={styles.sizeButton}><Text>250gm</Text></TouchableOpacity>
-                        <TouchableOpacity style={styles.sizeButton}><Text>500gm</Text></TouchableOpacity>
-                        <TouchableOpacity style={styles.sizeButton}><Text>1000gm</Text></TouchableOpacity>
-                    </View>
                     <Text style={styles.price}>{totalPrice.toLocaleString('vi-VN')} VND</Text>
                 </View>
             </ScrollView>
 
             <View style={styles.bottomBar}>
-                <TouchableOpacity style={styles.chatButton}>
+                <TouchableOpacity style={styles.chatButton} onPress={() => navigation.navigate("SimpleChat")}>
                     <Ionicons name="chatbubble-outline" size={20} color="white" />
                     <Text style={styles.bottomBarText}>Chat ngay</Text>
                 </TouchableOpacity>

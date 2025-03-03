@@ -58,6 +58,9 @@ const LoginScreen = ({ navigation }) => {
                 await AsyncStorage.removeItem('password');
             }
 
+            // 🔹 Lưu username để hiển thị trên SettingsScreen
+            await AsyncStorage.setItem('username', foundUser.username || 'User');
+
             // Chuyển hướng đến Home
             navigation.navigate('Home');
         } catch (error) {

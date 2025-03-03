@@ -8,7 +8,10 @@ import ProductDetail from './Home/ProductDetail/ProductDetail';
 import BottomTabNavigator from './BottomTabNavigator/BottomTabNavigator';
 import CartScreen from './BottomTabNavigator/CartScreen';
 import CheckoutScreen from './BottomTabNavigator/Checkout';
-
+import EditProfileScreen from './BottomTabNavigator/EditProfileScreen';
+import SimpleChat from "./Home/ProductDetail/ChatScreen";
+import PaymentScreen from './BottomTabNavigator/PaymentMethod';
+import AddressScreen from './BottomTabNavigator/Address';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -33,6 +36,10 @@ export default function App() {
             <Stack.Screen name="ProductDetail" component={ProductDetail} />
             <Stack.Screen name="Cart" component={CartScreen} />
             <Stack.Screen name="Checkout" component={CheckoutScreen} />
+            <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+            <Stack.Screen name="SimpleChat" component={SimpleChat} />
+            <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
+            <Stack.Screen name="AddressScreen" component={AddressScreen} />
           </>
         )}
       </Stack.Navigator>

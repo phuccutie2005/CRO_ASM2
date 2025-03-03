@@ -3,22 +3,22 @@
         {
             "id": 1,
             "name": "Cosplay đúng char",
-            "image": "https://media.tenor.com/SxXcDY6X72EAAAAe/nahida-nerd.png"
+            "image": "https://img.fruugo.com/product/8/47/1574878478_max.jpg"
         },
         {
             "id": 2,
             "name": "Cosplay char lạ",
-            "image": "https://media.tenor.com/SxXcDY6X72EAAAAe/nahida-nerd.png"
+            "image": "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lk0wobkci7eqe8"
         },
         {
             "id": 3,
             "name": "Figure",
-            "image": "https://media.tenor.com/SxXcDY6X72EAAAAe/nahida-nerd.png"
+            "image": "https://product.hstatic.net/200000462939/product/10005_90c7e4bca7694dc196a27cfae87f34a1_master.jpeg"
         },
         {
             "id": 4,
             "name": "Phụ kiện wig",
-            "image": "https://media.tenor.com/SxXcDY6X72EAAAAe/nahida-nerd.png"
+            "image": "https://images.tokopedia.net/img/cache/700/VqbcmM/2024/2/16/80314e8f-8562-4a5c-909b-13a286522933.jpg"
         }
     ],
     "products": [
@@ -26,25 +26,29 @@
             "id": 1,
             "name": "Full bộ đồ cosplay Nahida nguyên gốc GE",
             "price": 1200000,
-            "image": "https://img.joomcdn.net/47d661a02da24b1f212f372c86a6ed20ea7b0451_original.jpeg"
+            "image": "https://img.joomcdn.net/47d661a02da24b1f212f372c86a6ed20ea7b0451_original.jpeg",
+            "description": "Bộ cosplay nhân vật Nahida chất liệu cao cấp, giống nguyên bản."
         },
         {
             "id": 2,
             "name": "Full bộ đồ cosplay Lumine nguyên gốc GE",
             "price": 200000,
-            "image": "https://www.fm-anime.com/media/catalog/product/cache/d88a63ef4f53a0b30222f4d68ed8ec62/g/e/genshin_impact_lumine_female_traveler_dress_2_-_-min.jpg"
+            "image": "https://www.fm-anime.com/media/catalog/product/cache/d88a63ef4f53a0b30222f4d68ed8ec62/g/e/genshin_impact_lumine_female_traveler_dress_2_-_-min.jpg",
+            "description": "Bộ cosplay nhân vật Nahida chất liệu cao cấp, giống nguyên bản."
         },
         {
             "id": 3,
             "name": "HOT- Bộ tóc giả Keqing",
             "price": 300000,
-            "image": "https://m.media-amazon.com/images/I/71vY3pIqnFL._AC_UF1000,1000_QL80_.jpg"
+            "image": "https://m.media-amazon.com/images/I/71vY3pIqnFL._AC_UF1000,1000_QL80_.jpg",
+            "description": "Bộ cosplay nhân vật Nahida chất liệu cao cấp, giống nguyên bản."
         },
         {
             "id": 4,
             "name": "Full phụ kiện Yae Miko ver sườn xám",
             "price": 2500000,
-            "image": "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lkhn84mm167c3c"
+            "image": "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lkhn84mm167c3c",
+            "description": "Bộ cosplay nhân vật Nahida chất liệu cao cấp, giống nguyên bản."
         }
     ]
 }
