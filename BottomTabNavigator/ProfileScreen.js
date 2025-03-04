@@ -22,8 +22,9 @@ export default function SettingsScreen() {
         const loadUserData = async () => {
             try {
                 const storedData = await AsyncStorage.getItem('user_data');
-                const user = storedData ? JSON.parse(storedData) : {};
-                setUserData(user);
+                if (storedData) {
+                    setUserData(JSON.parse(storedData));
+                }
 
                 const storedDarkMode = await AsyncStorage.getItem('dark_mode');
                 setIsDarkMode(storedDarkMode === 'true');
@@ -40,23 +41,35 @@ export default function SettingsScreen() {
     const toggleDarkMode = async () => {
         const newMode = !isDarkMode;
         setIsDarkMode(newMode);
-        await AsyncStorage.setItem('dark_mode', newMode.toString());
+        await AsyncStorage.setItem('dark_mode', JSON.stringify(newMode));
+    };
+
+    const handleLogout = async () => {
+        Alert.alert(
+            "Log Out",
+            "Are you sure you want to log out?",
+            [
+                { text: "Cancel", style: "cancel" },
+                {
+                    text: "OK",
+                    onPress: async () => {
+                        await AsyncStorage.clear();
+                        navigation.replace('Login');
+                    },
+                },
+            ]
+        );
     };
 
     const handleOptionPress = (item) => {
         if (item.action === 'logout') {
-            Alert.alert(
-                "Log Out",
-                "Are you sure you want to log out?",
-                [
-                    { text: "Cancel", style: "cancel" },
-                    { text: "OK", onPress: () => navigation.replace('Login') }
-                ]
-            );
+            handleLogout();
         } else if (item.label === 'Payment Method') {
             navigation.navigate('PaymentScreen');
         } else if (item.label === 'Address') {
             navigation.navigate('AddressScreen');
+        } if (item.label === 'History') {
+            navigation.navigate('OrderHistory');
         }
     };
 
@@ -65,7 +78,10 @@ export default function SettingsScreen() {
             <Text style={[styles.header, isDarkMode && styles.darkText]}>Settings</Text>
 
             <TouchableOpacity style={styles.userInfo} onPress={() => navigation.navigate('EditProfile')}>
-                <Image source={userData.avatar ? { uri: userData.avatar } : require('../assets/icon.png')} style={styles.avatar} />
+                <Image
+                    source={userData.avatar ? { uri: userData.avatar } : require('../assets/icon.png')}
+                    style={styles.avatar}
+                />
                 <Text style={[styles.username, isDarkMode && styles.darkText]}>{userData.name || 'Guest'}</Text>
             </TouchableOpacity>
 
@@ -74,14 +90,13 @@ export default function SettingsScreen() {
                 keyExtractor={(item) => item.label}
                 renderItem={({ item }) => (
                     <TouchableOpacity style={styles.optionContainer} onPress={() => handleOptionPress(item)}>
-                        <Ionicons name={item.icon} size={24} color={isDarkMode ? "#E07A5F" : "#E07A5F"} style={styles.icon} />
+                        <Ionicons name={item.icon} size={24} color="#E07A5F" style={styles.icon} />
                         <Text style={[styles.optionText, isDarkMode && styles.darkText]}>{item.label}</Text>
                         <Ionicons name="chevron-forward-outline" size={20} color={isDarkMode ? "#aaa" : "#ccc"} />
                     </TouchableOpacity>
                 )}
             />
 
-            {/* Nút bật/tắt Dark Mode */}
             <View style={styles.darkModeContainer}>
                 <Text style={[styles.optionText, isDarkMode && styles.darkText]}>Dark Mode</Text>
                 <Switch value={isDarkMode} onValueChange={toggleDarkMode} />
@@ -116,5 +131,3 @@ const styles = StyleSheet.create({
         borderTopColor: '#E0E0E0',
     },
 });
-
-

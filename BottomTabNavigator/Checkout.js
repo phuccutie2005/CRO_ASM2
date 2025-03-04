@@ -35,7 +35,10 @@ const CheckoutScreen = ({ route }) => {
 
             <Text style={styles.total}>Tổng tiền: {finalTotalPrice.toLocaleString('vi-VN')} VND</Text>
 
-            <TouchableOpacity style={styles.orderButton} onPress={() => alert('Đặt hàng thành công!')}>
+            <TouchableOpacity
+                style={styles.orderButton}
+                onPress={() => navigation.navigate('PaymentSecret', { items: combinedItems, totalPrice: finalTotalPrice })}
+            >
                 <Text style={styles.buttonText}>Xác nhận đặt hàng</Text>
             </TouchableOpacity>
         </View>

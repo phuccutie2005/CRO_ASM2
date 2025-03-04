@@ -12,6 +12,8 @@ import EditProfileScreen from './BottomTabNavigator/EditProfileScreen';
 import SimpleChat from "./Home/ProductDetail/ChatScreen";
 import PaymentScreen from './BottomTabNavigator/PaymentMethod';
 import AddressScreen from './BottomTabNavigator/Address';
+import PaymentSecret from './BottomTabNavigator/PaymentSecret';
+import OrderHistory from './BottomTabNavigator/OrderHistory';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -40,6 +42,8 @@ export default function App() {
             <Stack.Screen name="SimpleChat" component={SimpleChat} />
             <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
             <Stack.Screen name="AddressScreen" component={AddressScreen} />
+            <Stack.Screen name="PaymentSecret" component={PaymentSecret} />
+            <Stack.Screen name="OrderHistory" component={OrderHistory} />
           </>
         )}
       </Stack.Navigator>

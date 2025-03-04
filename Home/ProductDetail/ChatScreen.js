@@ -14,7 +14,7 @@ const SimpleChat = () => {
 
         // Tạo phản hồi tự động
         setTimeout(() => {
-            const botMessage = { id: (Date.now() + 1).toString(), text: "Cảm ơn bạn đã nhắn tin!", sender: "bot" };
+            const botMessage = { id: (Date.now() + 1).toString(), text: "Cảm ơn bạn đã nhắn tin, bạn có thắc mắc gì cần giải đáp không?!", sender: "bot" };
             setMessages(prev => [...prev, botMessage]);
         }, 1000);
     };
